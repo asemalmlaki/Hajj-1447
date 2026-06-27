@@ -16,6 +16,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -405,6 +408,48 @@
             </style>
 
             <div class="max-w-5xl mx-auto px-4">
+                <style>
+                    .initiative-card {
+                        position: relative;
+                        overflow: hidden;
+                        transform-style: preserve-3d;
+                    }
+
+                    .initiative-card::before {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        background: radial-gradient(circle at top right, rgba(197, 168, 128, 0.1), transparent 28%),
+                                    radial-gradient(circle at bottom left, rgba(0, 92, 62, 0.1), transparent 22%);
+                        opacity: 0.9;
+                        pointer-events: none;
+                    }
+
+                    .initiative-card::after {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        pointer-events: none;
+                        background-image:
+                            radial-gradient(circle at 10% 15%, rgba(0, 92, 62, 0.22) 0%, rgba(0, 92, 62, 0.0) 12%),
+                            radial-gradient(circle at 25% 40%, rgba(0, 122, 74, 0.18) 0%, rgba(0, 122, 74, 0.0) 13%),
+                            radial-gradient(circle at 55% 20%, rgba(0, 92, 62, 0.25) 0%, rgba(0, 92, 62, 0.0) 10%),
+                            radial-gradient(circle at 75% 60%, rgba(0, 122, 74, 0.2) 0%, rgba(0, 122, 74, 0.0) 11%),
+                            radial-gradient(circle at 45% 75%, rgba(0, 92, 62, 0.16) 0%, rgba(0, 92, 62, 0.0) 12%);
+                        background-size: 180% 180%;
+                        opacity: 0.85;
+                        animation: initiative-circles 18s ease-in-out infinite;
+                    }
+
+                    @keyframes initiative-circles {
+                        0% { background-position: 0% 0%; opacity: 0.85; }
+                        25% { background-position: 15% 25%; }
+                        50% { background-position: 30% 10%; opacity: 0.75; }
+                        75% { background-position: 45% 30%; }
+                        100% { background-position: 0% 0%; opacity: 0.85; }
+                    }
+                </style>
+
                 <div class="mb-10 text-center">
                     <h2
                         class="text-3xl md:text-4xl font-bold text-moia-green mb-3 border-r-4 border-moia-gold pr-3 inline-block">
@@ -859,9 +904,72 @@
                         </div>
                     </div>
 
+                    <div class="bg-white rounded-2xl shadow-1xl overflow-hidden border border-moia-gold/20 moia-card group initiative-card">
+                        <div class="bg-gradient-to-l from-moia-gold to-moia-green text-white p-5 flex justify-between items-center">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <span class="text-xs bg-white/20 text-white px-3 py-1 rounded-full font-bold">مبادرة</span>
+                                <h3 class="text-xl font-bold">مبادرات استقبال وتوديع ضيوف الرحمن</h3>
+                            </div>
+                            <span class="text-3xl">✨</span>
+                        </div>
+
+                        <div class="p-6 grid gap-6 lg:grid-cols-[1.15fr_0.85fr] items-start">
+                            <div class="space-y-5 text-right">
+                                <p class="text-moia-dark text-base leading-relaxed hyphens-auto text-justify">
+                                    تتأتي هذه المبادرة لتكمل مسيرة الضيافة، حيث أعددنا محطات احتفاء تليق بضيوف الرحمن؛ 
+    استقبلناهم عند الوصول بالورد وسجادات الصلاة والكتب الإرشادية التي تُيسر مناسكهم، 
+    ولدى عودتهم من رحاب مكة المكرمة، ودعناهم بمشاعر المودة، مُهدين إياهم المصحف الشريف 
+    وهدايا تذكارية، لتظل هذه اللحظات ذكرى خالدة محفورة في وجدانهم من أرض الخير والعطاء.
+                                </p>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div class="rounded-3xl bg-moia-lightgreen/60 border border-moia-green/10 p-4">
+                                        <p class="text-moia-green font-bold mb-2">استقبال بحفاوة</p>
+                                        <p class="text-sm text-moia-gray">استقبال بالورد وتقديم سجادات الصلاة والكتيبات الإرشادية لراحة الضيوف.</p>
+                                    </div>
+                                    <div class="rounded-3xl bg-moia-gold/10 border border-moia-gold/20 p-4">
+                                        <p class="text-moia-dark font-bold mb-2">وداع يحفظ الذكرى</p>
+                                        <p class="text-sm text-moia-gray">توديع محترم بهدايا ومصحف شريف ودعوات خالصة.</p>
+                                    </div>
+                                    <div class="rounded-3xl bg-white border border-gray-100 p-4">
+                                        <p class="text-moia-green font-bold mb-2">خدمات داعمة</p>
+                                        <p class="text-sm text-moia-gray">دعم شرعي وميداني وتقني يسهم في راحة الحاج والمعتمر.</p>
+                                    </div>
+                                    <div class="rounded-3xl bg-white border border-gray-100 p-4">
+                                        <p class="text-moia-green font-bold mb-2">تغطية إعلامية ذكية</p>
+                                        <p class="text-sm text-moia-gray">توثيق المبادرة وإظهارها بشكل يليق بضيوف الرحمن.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+    <div class="overflow-hidden rounded-3xl border border-moia-gold/20 shadow-sm">
+        <a href="HD/5md.png" class="glightbox">
+            <img src="HD/5md.png" alt="استقبال ضيوف الرحمن" class="w-full h-40 object-cover cursor-zoom-in">
+        </a>
+    </div>
+
+    <div class="overflow-hidden rounded-3xl border border-moia-gold/20 shadow-sm">
+        <a href="HD/2md.png" class="glightbox">
+            <img src="HD/2md.png" alt="وداع ضيوف الرحمن" class="w-full h-40 object-cover cursor-zoom-in">
+        </a>
+    </div>
+
+    <div class="col-span-2 overflow-hidden rounded-3xl border border-moia-gold/20 shadow-sm">
+        <a href="HD/4md.jpg" class="glightbox">
+            <img src="HD/4md.jpg" alt="مبادرات الضيافة الميدانية" class="w-full h-48 object-cover cursor-zoom-in">
+        </a>
+    </div>
+</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
+<script>
+    const lightbox = GLightbox({
+        selector: '.glightbox'
+    });
+</script>
             <script>
                 document.addEventListener("DOMContentLoaded", () => {
                     const sliders = document.querySelectorAll('.phase-slider');
